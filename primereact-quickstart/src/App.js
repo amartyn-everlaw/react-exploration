@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 
 import { Dialog } from 'primereact/dialog';
+import { Button } from 'primereact/button';
 import {InputSwitch} from 'primereact/inputswitch';
 
 import PrimeReact from 'primereact/api';
 
-import 'primereact/resources/themes/saga-blue/theme.css';
+import './custom.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
@@ -30,7 +31,7 @@ function App() {
   );
 
   return (
-    <div className="App">
+    <div className="App" style={{margin: '100px'}}>
 
       <InputSwitch checked={allowOverlap} onChange={(e) => setVisible(true)} />
 

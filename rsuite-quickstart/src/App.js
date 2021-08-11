@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 
 import logo from './logo.svg';
 import './App.css';
-import 'rsuite/dist/styles/rsuite-default.css';
+import './custom.css';
 import { Button } from 'rsuite';
 import { Toggle } from 'rsuite';
 import { Modal } from 'rsuite';
@@ -17,7 +17,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" style={{margin: '100px'}}>
       <Toggle checked={allowOverlap} onChange={(e) => setVisible(true)} />
 
         <Modal show={visible} onHide={(e) => setVisible(false)}>

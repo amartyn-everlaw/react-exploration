@@ -18,11 +18,13 @@ import {
   ROLE
 } from "baseui/modal";
 import { KIND as ButtonKind } from "baseui/button";
+import {useStyletron} from 'baseui';
 
 
 function App() {
   const [visible, setVisible] = useState('');
   const [allowOverlap, setAllowOverlap] = useState(false);
+  const [css, theme] = useStyletron();
 
   const toggle = () => {
     setVisible(false);
@@ -30,9 +32,32 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App"
+      className={css({
+        margin: '100px'
+      })}>
 
-      <Checkbox checked={allowOverlap} checkmarkType={STYLE_TYPE.toggle} onChange={(e) => setVisible(true)} labelPlacement={LABEL_PLACEMENT.right}>
+      <Checkbox checked={allowOverlap} checkmarkType={STYLE_TYPE.toggle}
+      onChange={(e) => setVisible(true)} labelPlacement={LABEL_PLACEMENT.right}
+      checkmarkType={STYLE_TYPE.toggle_round}
+      overrides={{
+        Toggle: {
+          style: ({$theme, $checked}) => ({
+            outline: `1px solid #85AC40`,
+            backgroundColor: '#DBECBE',
+            transform: $checked ? 'translateX(12px)' : '',
+            boxShadow:'0px 1px 3px 0px #727576'
+          }),
+        },
+        ToggleTrack: {
+          style: ({$theme}) => ({
+            backgroundColor: '#DBECBE',
+            width: '30px',
+            height: '8px',
+            borderRadius: '4px'
+          }),
+        },
+      }}>
       </Checkbox>
 
       <Modal onClose={() => setVisible(false)} isOpen={visible} animate autoFocus size={SIZE.default} role={ROLE.dialog}>
